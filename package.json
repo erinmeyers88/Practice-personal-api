@@ -1,0 +1,23 @@
+{
+  "name": "practice-personal-api",
+  "version": "1.0.0",
+  "description": "Start of the Personal API Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erinmeyers88/Practice-personal-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erinmeyers88/Practice-personal-api/issues"
+  },
+  "homepage": "https://github.com/erinmeyers88/Practice-personal-api#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
