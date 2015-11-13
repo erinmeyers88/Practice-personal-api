@@ -14,6 +14,8 @@ var personalInfo = {
 	
 module.exports = {
 	
+	
+	//GET requests
 	getName: function (req, res, next) {
 		res.status(200).json(personalInfo.name);		
 	},
@@ -23,6 +25,15 @@ module.exports = {
 	},
 	
 	getOccupations: function (req, res, next) {
+		if (req.query.order) {
+			if (req.query.order === "desc") {
+				personalInfo.occupations.sort().reverse();
+			}
+			else {
+				personalInfo.occupations.sort();
+			}
+		}
+		
 		res.status(200).json(personalInfo.occupations);	
 	},
 	
@@ -44,7 +55,32 @@ module.exports = {
 			}
 		};
 		res.status(200).json(hobbiesByType);
-	} 
+	},
+	
+	//PUT requests
+	
+	updateName: function (req, res, next) {
+		personalInfo.name = req.body.name;
+		res.send({name: personalInfo.name});
+	},
+	
+	updateLocation: function (req, res, next) {
+		personalInfo.location = req.body.location;
+		res.send({location: personalInfo.location});
+	},
+	
+	
+	//POST requests  
+	
+	addHobbies: function (req, res, next) {
+		personalInfo.hobbies.push(req.body);
+		res.send(personalInfo.hobbies);
+	},
+	
+	addOccupations: function (req, res, next) {
+		personalInfo.occupations.push(req.body.occupations);
+		res.send(personalInfo.occupations);
+	}
 	
 	
 };
