@@ -24,6 +24,10 @@ app.get("/hobbies", mainCtrl.getHobbies);
 
 app.get("/hobbies/:type", mainCtrl.getHobbiesType);
 
+app.get("/skills", mainCtrl.getSkillsByExperience);
+
+app.get('/secrets/:username/:pin', mainCtrl.getSecrets);
+
 
 //PUT requests
 
@@ -38,7 +42,8 @@ app.post("/hobbies", mainCtrl.addHobbies);
 
 app.post("/occupations", mainCtrl.addOccupations);
 
-
+app.post('/skills', mainCtrl.addSkills);
+// , middleware.generateId
 
 
 

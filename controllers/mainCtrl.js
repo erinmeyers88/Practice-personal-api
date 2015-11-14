@@ -10,7 +10,28 @@ var personalInfo = {
 			{"name": "taekwondo",
 			"type": "past"}
 		]
+	};
+	
+	
+var skills = [
+	{
+	"id": 1,
+  	"name": "Javascript",
+  	"experience": "Intermediate"
+	},
+	{
+	"id": 2,
+	"name": "HTML",
+	"experience": "Intermediate"	
+	},
+	{
+	"id": 3,
+	"name": "bow hunting",
+	"experience": "Expert" 	
 	}
+];
+	
+var secrets = ["my secret!"];
 	
 module.exports = {
 	
@@ -46,7 +67,6 @@ module.exports = {
 	},
 	
 	getHobbiesType: function (req, res, next) {
-		var hobbyType = req.params.type;
 		var hobbiesByType = [];
 		
 		for (var i = 0; i < personalInfo.hobbies.length; i++) {
@@ -55,6 +75,41 @@ module.exports = {
 			}
 		};
 		res.status(200).json(hobbiesByType);
+	},
+	
+	getSkills: function (req, res, next) {
+		res.status(200).json(skills);	
+	},
+	
+	getSkillsByExperience: function (req, res, next) {
+		var skillsByExperience = [];
+		if (req.query.experience === "Intermediate") {
+			for (var i = 0; i < skills.length; i++) {
+				if (skills[i].experience === "Intermediate") {
+					skillsByExperience.push(skills[i].name);
+				}
+			}
+			res.status(200).json(skillsByExperience);
+		}
+
+		else if (req.query.experience === "Expert") {
+			for (var i = 0; i < skills.length; i++) {
+				if (skills[i].experience === "Expert") {
+					skillsByExperience.push(skills[i].name);
+				}
+			}
+			res.status(200).json(skillsByExperience);
+		}
+		else {
+			
+		}
+		res.status(200).json(skills);
+	},
+	
+	getSecrets: function (req, res, next) {
+		if (req.params.username === "Erin" && req.params.pin === "123") {
+			res.status(200).json(secrets);
+		}
 	},
 	
 	//PUT requests
@@ -80,7 +135,10 @@ module.exports = {
 	addOccupations: function (req, res, next) {
 		personalInfo.occupations.push(req.body.occupations);
 		res.send(personalInfo.occupations);
-	}
+	},
 	
+	addSkills: function (req, res, next) {
+		skills.push(req.body);
+	}
 	
 };

@@ -12,5 +12,11 @@ module.exports = {
     });
 
     next();
+  },
+  
+  generateId: function (req, res, next) {
+    
+    
+    next();
   }
 };
