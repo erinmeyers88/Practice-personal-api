@@ -138,7 +138,8 @@ module.exports = {
 	},
 	
 	addSkills: function (req, res, next) {
-		skills.push(req.body);
+		skills.push(req.body.skill);
+		res.send(skills);
 	}
 	
 };

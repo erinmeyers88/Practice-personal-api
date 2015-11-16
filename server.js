@@ -42,9 +42,7 @@ app.post("/hobbies", mainCtrl.addHobbies);
 
 app.post("/occupations", mainCtrl.addOccupations);
 
-app.post('/skills', mainCtrl.addSkills);
-// , middleware.generateId
-
+app.post('/skills', middleware.generateId, mainCtrl.addSkills);
 
 
 var port = 8000;

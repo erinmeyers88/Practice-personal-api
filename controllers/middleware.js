@@ -15,8 +15,7 @@ module.exports = {
   },
   
   generateId: function (req, res, next) {
-    
-    
+    req.body.skill.id = req.body.skills.length+1;
     next();
   }
 };
